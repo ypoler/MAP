@@ -3,37 +3,37 @@
 
 This library contains the functions used in my Thesis:
 
-"Bayesian Approach to Clustering 
-Finding the number of clusters: the MAP rule
+>Bayesian Approach to Clustering 
+>Finding the number of clusters: the MAP rule
 
-Submitted in partial fulfillemnt of graduation requirments for the degree of M.Sc. in Statistics
+>Submitted in partial fulfillemnt of graduation requirments for the degree of M.Sc. in Statistics
 
-prepared under the supervision of rofessor Felix Abramovich 
+>prepared under the supervision of rofessor Felix Abramovich 
 
-January 2010
+>January 2010
 
-Tel Aviv University
-The Raymond and Beverly Sackler Faculty of Exact Sciences
-School of Mathematical Sciences
-Department of Statistics and Operation Research
+>Tel Aviv University
+>The Raymond and Beverly Sackler Faculty of Exact Sciences
+>School of Mathematical Sciences
+>Department of Statistics and Operation Research
 
-By Yinat Trompoler"
+>By Yinat Trompoler"
 
 
 The functions are both for the MAP rule described in the Thesis and other approches compared to: 
 
-KL: KRZANOWSKI, W. J., AND LAI, Y. T. A criterion for determining the number
+**KL:** KRZANOWSKI, W. J., AND LAI, Y. T. A criterion for determining the number
     of groups in a data set using sum-of-squares clustering. Biometrics 44, 1 (1988), 23–34.
 
-Validity: RAY, S., AND TURI, R. Determination of number of clusters in k-means clustering
+**Validity:** RAY, S., AND TURI, R. Determination of number of clusters in k-means clustering
           and application in colour image segmentation. In Proceedings of the 4th
           International Conference on Advances in Pattern Recognition and Digital Techniques (1999), pp. 137–143.
 
 
-Jump: SUGAR, C. A., AND JAMES, G. M. Finding the number of clusters in a dataset:
+**Jump:** SUGAR, C. A., AND JAMES, G. M. Finding the number of clusters in a dataset:
       An information-theoretic approach. Journal of the American Statistical Association 93, 463 (2003), 750–763.
 
-GAP: TIBSHIRANI, R., WALTHER, G., AND HASTIE, T. Estimating the number of
+**GAP:** TIBSHIRANI, R., WALTHER, G., AND HASTIE, T. Estimating the number of
      clusters in a data set via the gap statistic. J. R. Statist. Soc. B 63, 2 (2001), 411–423.
 
 
@@ -81,8 +81,8 @@ real.k:		Number f clusters (input k)
 real.cent: 	Matrix of centres (input cent)
 dat:		Matrix of simulated data (n*p)
 real.assign:	Matrix of indicator assignments
-		(cell i,j=1 if observation i
-		belongs to cluster j) - n*k
+                (cell i,j=1 if observation i
+                belongs to cluster j) - n*k
 ```
 
 The clustering functions require only n, p and dat to be part of given simObj - the rest of the fields are created in case the simObj is simulated via createRandomClusters function.
@@ -94,7 +94,7 @@ The clustering functions require only n, p and dat to be part of given simObj - 
 
 Each approach, has an API of its own which takes a simObj, range number of clusters, number of repeats to run the k-means iteration:
 
-KL:
+**KL:**
 ```
 #	KL.stat:
 #		Set a score table for the correct K using the
@@ -105,10 +105,10 @@ KL:
 #		min.k:	minimum k
 #		max.k:	maximum k
 #		strt:   "Random" or "Fraley" starting points
-#		n:	number of repeats (optional=100)
+#		n:      number of repeats (optional=100)
 ```
 
-Validity:
+**Validity:**
 ```
 #	Validity.stat:
 #		Set a score table for the correct K using the
@@ -119,10 +119,10 @@ Validity:
 #		min.k:	minimum k
 #		max.k:	maximum k
 #		strt:   "Random" or "Fraley" starting points
-#		n:	number of repeats (optional=100)
+#		n:      number of repeats (optional=100)
 ```
 
-Jump:
+**Jump:**
 ```
 #	Jump.stat:
 #		Set a score table for the correct K using the
@@ -133,9 +133,11 @@ Jump:
 #		min.k:	minimum k
 #		max.k:	maximum k
 #		strt:   "Random" or "Fraley" starting points
-#		n:	number of repeats (optional=100)
+#		n:      number of repeats (optional=100)
+```
 
-Gap:
+**Gap:**
+```
 #	Gap.stat:
 #		Set a score table for the correct K using the
 #		the Gap method over a number of times
@@ -145,25 +147,26 @@ Gap:
 #		min.k:	minimum k
 #		max.k:	maximum k
 #		strt:   "Random" or "Fraley" starting points
-#		n:	number of repeats (optional=100)
-#		B:	size of ref. data (optional=50)
+#		n:      number of repeats (optional=100)
+#		B:      size of ref. data (optional=50)
 ```
+
 NOTE: Gap approach is very time consuming, as its calculation differs from other approaches
 
-MAP:
+**MAP:**
 ```
 #	MAP.stat:
 #		Set a score table for the correct K using the
 #		the MAP method over a number of times
 #
 #	parameters:
-#		simObj:		Simulated object
-#		min.k:		minimum k
-#		max.k:		maximum k
-#		strt:   	"Random" or "Fraley" starting points
-#		n:		number of repeats (optional=100)
-#		approach:	"Binom" or "Unif"
-#		q:		In case of binom approach, estimated q
+#		simObj:         Simulated object
+#		min.k:          minimum k
+#		max.k:          maximum k
+#		strt:           "Random" or "Fraley" starting points
+#		n:              number of repeats (optional=100)
+#		approach:       "Binom" or "Unif"
+#		q:              In case of binom approach, estimated q
 ```
 
 
