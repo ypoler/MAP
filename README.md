@@ -58,6 +58,7 @@ The current version is of non-package format, therefore, all function files shou
 1. Extract the files to a directory
 2. Open R and set the working direcory to the root of the extracted folder (above directories "approaches" and "functions")
 3. In your script which needs to use the criteria, include the following files:
+```
 source("functions\\sim.obj.R");
 source("functions\\kmeans.functions.R");
 source("approaches\\KL.R");
@@ -65,7 +66,7 @@ source("approaches\\Validity.R");
 source("approaches\\Gap.R");
 source("approaches\\Jump.R");
 source("approaches\\MAP.R");
-
+```
 
 
 
@@ -73,6 +74,7 @@ source("approaches\\MAP.R");
 ==================
 
 The object which represents the data is called "simObj". It isn't of strong-typed form, and contains the following fields:
+```
 n:		Number of observations
 p:		Number of dimensions (input p)
 real.k:		Number f clusters (input k)
@@ -81,6 +83,7 @@ dat:		Matrix of simulated data (n*p)
 real.assign:	Matrix of indicator assignments
 		(cell i,j=1 if observation i
 		belongs to cluster j) - n*k
+```
 
 The clustering functions require only n, p and dat to be part of given simObj - the rest of the fields are created in case the simObj is simulated via createRandomClusters function.
 
@@ -92,6 +95,7 @@ The clustering functions require only n, p and dat to be part of given simObj - 
 Each approach, has an API of its own which takes a simObj, range number of clusters, number of repeats to run the k-means iteration:
 
 KL:
+```
 #	KL.stat:
 #		Set a score table for the correct K using the
 #		the K-L method over a number of times
@@ -102,8 +106,10 @@ KL:
 #		max.k:	maximum k
 #		strt:   "Random" or "Fraley" starting points
 #		n:	number of repeats (optional=100)
+```
 
 Validity:
+```
 #	Validity.stat:
 #		Set a score table for the correct K using the
 #		the K-L method over a number of times
@@ -114,8 +120,10 @@ Validity:
 #		max.k:	maximum k
 #		strt:   "Random" or "Fraley" starting points
 #		n:	number of repeats (optional=100)
+```
 
 Jump:
+```
 #	Jump.stat:
 #		Set a score table for the correct K using the
 #		the Jump method over a number of times
@@ -139,9 +147,11 @@ Gap:
 #		strt:   "Random" or "Fraley" starting points
 #		n:	number of repeats (optional=100)
 #		B:	size of ref. data (optional=50)
+```
 NOTE: Gap approach is very time consuming, as its calculation differs from other approaches
 
 MAP:
+```
 #	MAP.stat:
 #		Set a score table for the correct K using the
 #		the MAP method over a number of times
@@ -154,7 +164,7 @@ MAP:
 #		n:		number of repeats (optional=100)
 #		approach:	"Binom" or "Unif"
 #		q:		In case of binom approach, estimated q
-
+```
 
 
 6. Example:
@@ -163,6 +173,7 @@ MAP:
 a. simulate 2D 3 clusters dataset:
 ------------------------------------
 
+```
 k = 3;
 ni = rep(50, k);
 n = sum(ni);
@@ -199,12 +210,14 @@ plot(res[2,]~res[1,], xlab="num. clusters", ylab="freq.")	# plot the frq. of the
 # Run MAP with uniform prior on the data
 res = MAP.stat( simObj, k.min, k.max, strt="Random", n=50, approach="Unif");
 plot(res[2,]~res[1,], xlab="num. clusters", ylab="freq.")	# plot the frq. of the hist
+```
 
 
 
 b. Import Iris data:
 ----------------------
 
+```
 irisObj = NULL;
 irisObj$p = 4;
 irisObj$n = 150;
@@ -237,5 +250,6 @@ plot(res[2,]~res[1,], xlab="num. clusters", ylab="freq.")	# plot the frq. of the
 # Run MAP with uniform prior on the data
 res = MAP.stat( irisObj, k.min, k.max, strt="Random", n=50, approach="Unif");
 plot(res[2,]~res[1,], xlab="num. clusters", ylab="freq.")	# plot the frq. of the hist
+```
 
 NOTE: All approaches perform poorly on the Iris example and tend to assign the largest number of clusters (7) instead of the correct number
