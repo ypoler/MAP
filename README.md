@@ -17,7 +17,8 @@ This library contains the functions used in my Thesis:
 >School of Mathematical Sciences
 >Department of Statistics and Operation Research
 
->By Yinat Trompoler"
+>By Yinat Trompoler
+
 
 
 The functions are both for the MAP rule described in the Thesis and other approches compared to: 
