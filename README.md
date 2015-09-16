@@ -8,7 +8,7 @@ This library contains the functions used in my Thesis:
 
 >Submitted in partial fulfillemnt of graduation requirments for the degree of M.Sc. in Statistics
 
->prepared under the supervision of rofessor Felix Abramovich 
+>prepared under the supervision of Professor Felix Abramovich 
 
 >January 2010
 
